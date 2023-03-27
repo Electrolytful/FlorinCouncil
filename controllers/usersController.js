@@ -11,7 +11,8 @@ function loadLogin(req, res) {
 }
 
 function loadDashboard(req, res) {
-    res.render('dashboard', {user: "User"});
+    console.log(req.session);
+    res.render('dashboard', {user: req.session.user.username});
 }
 
 async function registerUser(req, res) {
@@ -41,7 +42,7 @@ async function registerUser(req, res) {
             res.render('register', { errors });
         } else {
             const hashedPassword = await bcrypt.hash(password, 10);
-            const newUser = { username, name, email, hashedPassword, address, phone, dob }
+            const newUser = { username, name, email, hashedPassword, address, phone, dob };
             const result = await User.create(newUser);
             req.flash('success_msg', "Registered successfully!");
             res.redirect('/users/login');
@@ -50,7 +51,43 @@ async function registerUser(req, res) {
 }
 
 async function loginUser(req, res) {
-    
+    const data = req.body;
+
+    if(!data.email || !data.password) {
+        return res.status(422).json({ error: "Incorrect input" });
+    }
+
+    try {
+        const user = await User.showUserByEmail(data.email);
+
+        if(!user) {
+            throw Error("No user with that email");
+        }
+
+        if(req.session.authenticated) {
+            return res.status(200).json(req.session);
+        }
+
+        const passwordCheck = await bcrypt.compare(data.password, user.password);
+
+        if(!passwordCheck) {
+            throw Error("Incorrect password");
+        }
+
+        user.password = null;
+        req.session.authenticated = true;
+        req.session.user = user;
+        res.render('dashboard', { user: req.session.user.username });
+    } catch (err) {
+        return res.status(403).json({ error: err.message });
+    }
+}
+
+async function logoutUser(req, res) {
+    req.session.authenticated = false;
+    req.session.user = null;
+    req.flash('logged_out', "Logged out successfully!")
+    res.redirect('/users/login');
 }
 
 
@@ -60,5 +97,6 @@ module.exports = {
     loadLogin,
     loadDashboard,
     registerUser,
-    loginUser
+    loginUser,
+    logoutUser
 }
