@@ -2,6 +2,7 @@
 const express = require('express');
 const db = require('./database/dbConfig.js');
 const usersRoute = require('./routes/usersRoute.js');
+const libraryRoute = require('./routes/libraryRoute.js');
 
 // setting port
 const port = process.env.PORT || 4000;
@@ -29,3 +30,6 @@ app.get('/', (req, res) => {
 
 // users route
 app.use('/users', usersRoute);
+
+// Library route.
+app.use('/library', libraryRoute);

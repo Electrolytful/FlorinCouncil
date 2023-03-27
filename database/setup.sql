@@ -32,7 +32,7 @@ CREATE TABLE loans(
     book_id INT NOT NULL,
     user_id INT NOT NULL,
     loan_date DATE NOT NULL,
-    complete BOOLEAN,
+    complete BOOLEAN DEFAULT false,
     PRIMARY KEY (id),
     CONSTRAINT kf_loans_books_bookid FOREIGN KEY (book_id) REFERENCES books (id),
     CONSTRAINT kf_loans_users_userid FOREIGN KEY (user_id) REFERENCES users (id)
