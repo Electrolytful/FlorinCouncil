@@ -1,13 +1,16 @@
 // imports
 const express = require('express');
-const db = require('./database/dbConfig.js');
+const db = require('./database/dbConnect.js');
 const usersRoute = require('./routes/usersRoute.js');
+require('dotenv').config();
 
 // setting port
 const port = process.env.PORT || 4000;
 
 // initialising server
 const app = express();
+
+app.use(express.static(__dirname + '/public'));
 
 // allowing server to use ejs and get form data from the frontend view
 app.set('view engine', 'ejs');

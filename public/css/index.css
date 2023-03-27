@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Raleway:wght@500&family=Lobster+Two&family=Roboto:wght@100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #210B2C;
+}
+
+.background {
+    display: inline-block;
+    position: absolute;
+    background-image: url(../img/achilles_statue.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    filter: blur(8px);
+}
+
+header {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Lobster Two', cursive;
+    font-size: 50px;
+    color: #55286F;
+    cursor: pointer;
+}
+
+.home {
+    display: flex;
+    position: relative;
+    height: 90vh;
+    width: 90%;
+}
+
+.intro {
+    display: flex;
+    height: 120vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+    gap: 20vh;
+    margin-bottom: -100px;
+    z-index: 10;
+}
+
+#title {
+    font-family: 'Raleway', bold;
+    font-size: 64px;
+    color: #55286F;
+    left: 20px;
+}
+
+#intro-para {
+    font-size: 40px;
+    font-family: 'Antic Slab', serif;
+    color: bisque;
+}
+
+.landmarks {
+    margin-top: 400px;
+    margin-bottom: 100px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+    gap: 20%;
+
+}
