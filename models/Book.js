@@ -29,7 +29,7 @@ class BookService {
         FROM books
         WHERE id = $1`,
         [id])
-        return book
+        return BookService.mapToModel(book)
     }
 }
 
