@@ -5,7 +5,7 @@ const usersRoute = require('./routes/usersRoute.js');
 require('dotenv').config();
 
 // setting port
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 
 // initialising server
 const app = express();
