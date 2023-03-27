@@ -15,6 +15,7 @@ const port = process.env.PORT || 4000;
 const app = express();
 
 app.use(express.static(__dirname + '/public'));
+app.use(express.json());
 
 // allowing server to use ejs and get form data from the frontend view
 app.set('view engine', 'ejs');
