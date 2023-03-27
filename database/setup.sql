@@ -29,7 +29,7 @@ CREATE TABLE books(
 
 CREATE TABLE loans(
     id INT GENERATED ALWAYS AS IDENTITY,
-    book_id INT NOT NULL UNIQUE,
+    book_id INT NOT NULL,
     user_id INT NOT NULL,
     loan_date DATE NOT NULL,
     complete BOOLEAN DEFAULT false,

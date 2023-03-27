@@ -8,7 +8,6 @@ const libraryRoute = require('./routes/libraryRoute.js');
 
 const session = require('express-session');
 const flash = require('express-flash');
-const usersRoute = require('./routes/usersRoute.js');
 
 // setting port
 const port = process.env.PORT || 4000;
