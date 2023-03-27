@@ -17,8 +17,9 @@ class BookService {
 
     static async showAll() {
         const books = await db.query(`
-        SELECT *
-        FROM books
+        SELECT B.* 
+        FROM BOOKS B
+        WHERE B.ID NOT IN (SELECT BOOK_ID FROM LOANS WHERE COMPLETE = FALSE)
         `)
         return BookService.mapToModel(books)
     }

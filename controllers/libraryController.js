@@ -20,19 +20,16 @@ async function show(req, res) {
     }
 };
 
-// async function showUserBooks(res, req) {
-//     try {
-// //         console.log(req.body)
-//         console.log(JSON.stringify(req.headers))
-// //         console.log(req.get('username'))
-// //         // const books = await LoanService.showAll(parseInt(req.body.user_id))
-//         // res.status(200).json(books)
-//         res.send(books)
-//     } catch (error) {
-//         // res.status(404).json({'error': error.message})
-//         res.send('error')
-//     }
-// };
+async function showUserBooks(req, res) {
+    try {
+        let userId = req.get('user-id');
+        const books = await LoanService.showAll(parseInt(userId))
+        
+        res.status(200).json(books)
+    } catch (error) {
+        res.status(404).json({'error': error.message})
+    }
+};
 
 async function create(req, res) {
     try {
@@ -57,5 +54,5 @@ module.exports = {
     show,
     create,
     update,
-    // showUserBooks,
+    showUserBooks
 };

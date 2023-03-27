@@ -1,5 +1,6 @@
 // imports
 require('dotenv').config();
+
 const express = require('express');
 const db = require('./database/dbConnect.js');
 const usersRoute = require('./routes/usersRoute.js');
@@ -8,7 +9,6 @@ const libraryRoute = require('./routes/libraryRoute.js');
 const session = require('express-session');
 const flash = require('express-flash');
 const usersRoute = require('./routes/usersRoute.js');
-
 
 // setting port
 const port = process.env.PORT || 4000;
@@ -37,7 +37,6 @@ app.use(flash());
 app.listen(port, () => {
     console.log(`Server running on Port: ${port}`);
 });
-
 
 
 // home route
