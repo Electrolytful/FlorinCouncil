@@ -1,7 +1,10 @@
 // imports
+require('dotenv').config();
 const express = require('express');
-const db = require('./database/dbConfig.js');
+const session = require('express-session');
+const flash = require('express-flash');
 const usersRoute = require('./routes/usersRoute.js');
+
 
 // setting port
 const port = process.env.PORT || 4000;
@@ -12,6 +15,15 @@ const app = express();
 // allowing server to use ejs and get form data from the frontend view
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));
+
+
+app.use(session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(flash());
 
 
 // running the server on port
