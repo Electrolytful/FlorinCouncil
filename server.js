@@ -1,6 +1,7 @@
 // imports
+require('dotenv').config();
 const express = require('express');
-const db = require('./database/dbConfig.js');
+const db = require('./database/dbConnect.js');
 const usersRoute = require('./routes/usersRoute.js');
 const libraryRoute = require('./routes/libraryRoute.js');
 
@@ -33,3 +34,5 @@ app.use('/users', usersRoute);
 
 // Library route.
 app.use('/library', libraryRoute);
+
+module.exports = app;

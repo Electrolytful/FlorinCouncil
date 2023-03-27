@@ -2,7 +2,7 @@ const { Router } = require('express');
 const libraryController = require('../controllers/libraryController.js');
 const router = Router();
 
-router.get('/books')
+router.get('/', libraryController.index);
 router.get('/:book_id')
 // Create a new loan.
 router.post('/:book_id')
