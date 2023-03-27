@@ -73,13 +73,53 @@ header {
     color: bisque;
 }
 
-.landmarks {
-    margin-top: 400px;
-    margin-bottom: 100px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-    gap: 20%;
+#landmark-title {
+    top: 400px;
+}
 
+
+.image-container {
+    margin-top: 600px;
+    display: flex;
+    justify-content: center;
+}
+
+.image-wrapper {
+    position: relative;
+    margin: 0 10px;
+}
+
+.image-wrapper img {
+    display: block;
+    max-width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-overlay:hover {
+    opacity: 1;
+}
+
+.image-text {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
 }
