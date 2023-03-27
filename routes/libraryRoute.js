@@ -5,7 +5,7 @@ const router = Router();
 router.get('/', libraryController.index);
 router.get('/:book_id', libraryController.show);
 // Create a new loan.
-router.post('/:book_id')
+router.post('/:book_id', libraryController.create);
 // Update loan to complete.
 router.patch('/:book_id')
 

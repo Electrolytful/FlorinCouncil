@@ -14,6 +14,7 @@ const app = express();
 // allowing server to use ejs and get form data from the frontend view
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));
+app.use(express.json()); // parse req.body to json.
 
 
 // running the server on port

@@ -1,4 +1,5 @@
 const BookService = require('../models/Book.js');
+const LoanService = require('../models/Loan.js');
 
 async function index(req, res) {
     try {
@@ -17,9 +18,20 @@ async function show(req, res) {
     } catch (error) {
         res.status(404).json({'error': error.message})
     }
+};
+
+async function create(req, res) {
+    try {
+        console.log(req.body)
+        const loan = await LoanService.create(req.body);
+        res.status(201).json({'created': loan})
+    } catch (error) {
+        res.status(500).json({'error': error.message})
+    }
 }
 
 module.exports = { 
     index,
     show,
+    create,
 };
