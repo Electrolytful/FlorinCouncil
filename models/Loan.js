@@ -15,12 +15,12 @@ class LoanService {
         return dbResponse.rows.map(e => new Loan(e.id, e.book_id, e.user_id, e.data, e.complete))
     }
 
-    static async showAll(username) {
+    static async showAll(user_id) {
         const loans = await db.query(`
         SELECT *
         FROM loans
         WHERE user_id = $1`,
-        [username])
+        [user_id])
         return LoanService.mapToModel(loans)
     }
 

@@ -29,7 +29,7 @@ CREATE TABLE books(
 
 CREATE TABLE loans(
     id INT GENERATED ALWAYS AS IDENTITY,
-    book_id INT NOT NULL,
+    book_id INT NOT NULL UNIQUE,
     user_id INT NOT NULL,
     loan_date DATE NOT NULL,
     complete BOOLEAN DEFAULT false,
@@ -105,7 +105,7 @@ VALUES
     ('Order of the Phoenix', 'J.K. Rowling', '2003'),
     ('Half-Blood Prince', 'J.K. Rowling', '2005'),
     ('Deathly Hallows', 'J.K. Rowling', '2007'),
-    ('The Shining', 'J.K. Rowling', '1977'),
+    ('The Shining', 'Stephen King', '1977'),
     ('To Kill a Mockingbird', 'Harper Lee', '1960'),
     ('Pride and Prejudice', 'Jane Austen', '1813'),
     ('The Catcher in the Rye', 'J.D. Salinger', '1951'),
