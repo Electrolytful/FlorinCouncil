@@ -7,7 +7,7 @@ router.get('/:book_id', libraryController.show);
 // Create a new loan.
 router.post('/:book_id', libraryController.create);
 // Update loan to complete.
-router.patch('/:book_id')
+router.patch('/:loan_id', libraryController.update);
 
 
 module.exports = router;
