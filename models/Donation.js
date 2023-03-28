@@ -27,7 +27,6 @@ class DonationService {
     }
 
     static async update(id) {
-        console.log(id)
         const donation = await db.query(`
         UPDATE recycling_items
         SET donated = $1

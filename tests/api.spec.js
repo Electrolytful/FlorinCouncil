@@ -27,6 +27,7 @@ describe("Library API Server", () => {
         await testClient.query('CREATE TEMPORARY TABLE users (LIKE users INCLUDING ALL)');
         await testClient.query('CREATE TEMPORARY TABLE loans (LIKE loans INCLUDING ALL)');
         await testClient.query('CREATE TEMPORARY TABLE local_attractions (LIKE local_attractions INCLUDING ALL)');
+        await testClient.query('CREATE TEMPORARY TABLE recycling_items (LIKE recycling_items INCLUDING ALL)');
     });
 
     afterEach(async () => {
@@ -34,6 +35,7 @@ describe("Library API Server", () => {
         await testClient.query('DROP TABLE IF EXISTS pg_temp.books');
         await testClient.query('DROP TABLE IF EXISTS pg_temp.loans');
         await testClient.query('DROP TABLE IF EXISTS pg_temp.local_attractions');
+        await testClient.query('DROP TABLE IF EXISTS pg_temp.recycling_items');
     });
 
     describe('/library', () => {
@@ -144,6 +146,32 @@ describe("Library API Server", () => {
         });
 
     });
+
+    describe('/recycling', () => {
+        it('Returns empty collection if no items for donation are registered.', async () => {
+            const res = await request(app).get('/recycling/donations')
+            expect(res.statusCode).toBe(200);
+            expect(res.body.length).toBe(0);
+        });
+
+        it('Returns collection of registered items for donation.', async () => {
+            givenRecyclingItemExists();
+            const res = await request(app).get('/recycling/donations')
+            expect(res.statusCode).toBe(200);
+            expect(res.body.length).toBe(1);
+        });
+
+        it('Successfully update item\'s donated status.', async () => {
+            givenRecyclingItemExists();
+
+            const patchRes = await request(app)
+            .patch('/recycling/donations/1')
+
+            expect(patchRes.statusCode).toBe(200);
+            expect(patchRes.body.updated[0].donated).toBe(true);
+        })
+
+    });
     
 
     async function givenBooksExist() {
@@ -164,5 +192,9 @@ describe("Library API Server", () => {
 
     async function givenAttractionsExist() {
         await testClient.query("INSERT INTO pg_temp.local_attractions (name, description, location_url) VALUES ('Rock Park', 'This is the perfect destination for families looking to spend a fun-filled day outdoors. Our park features a stunning lake with crystal clear waters, surrounded by lush greenery and breathtaking views. There''s something for everyone here - you can enjoy a picnic by the lake, go for a relaxing stroll around the water, or even take a dip and cool off on a hot day. For those seeking adventure, we offer a variety of exciting water activities such as kayaking, paddleboarding, and fishing. If you''re looking for something a little more laid back, our park also has plenty of space for games and sports, as well as playgrounds for children to explore and play. And when hunger strikes, our on-site restaurant offers delicious meals and snacks for the whole family to enjoy. Come visit us and make unforgettable memories in our wonderful Rock Park with a beautiful lake!','https://d-art.ppstatic.pl/kadry/k/r/b4/40/53fed46670a7e_o_full.jpg')");
+    };
+
+    async function givenRecyclingItemExists() {
+        await testClient.query("INSERT INTO pg_temp.recycling_items (title, description, date, condition, picture_url) VALUES ('Harry Potter Box Set', 'This box includes a collection of all seven books in the Harry Potter series written by J.K. Rowling. The set is perfect for fans of all ages and includes the beloved stories of the wizarding world, featuring the adventures of Harry, Ron, and Hermione. This set is in perfect condition and is opportunity for anyone who loves fantasy, magic, and adventure.', '2023-03-28', 'used', 'https://i.ebayimg.com/images/g/d9IAAOSw4-xkDwSB/s-l1600.jpg')");
     };
 });
