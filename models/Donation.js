@@ -1,4 +1,4 @@
-db = require('../database/dbConnect.js');
+const db = require('../database/dbConnect.js');
 
 class Donation {
     constructor (id, title, description, date, condition, donated, picture_url) {
@@ -24,6 +24,17 @@ class DonationService {
         WHERE donated = false
         `)
         return DonationService.mapToModel(donations)
+    }
+
+    static async update(id) {
+        console.log(id)
+        const donation = await db.query(`
+        UPDATE recycling_items
+        SET donated = $1
+        WHERE id = $2
+        RETURNING *`,
+        [true, id])
+        return DonationService.mapToModel(donation)
     }
 }
 

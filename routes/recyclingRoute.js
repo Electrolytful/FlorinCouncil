@@ -6,6 +6,6 @@ const router = Router();
 router.get('/donations', recyclingController.index);
 
 // Updates an item to donated = true.
-// router.patch('/donations/:id', recyclingController.update);
+router.patch('/donations/:id', recyclingController.update);
 
 module.exports = router;

@@ -9,4 +9,16 @@ async function index(req, res) {
     }
 };
 
-module.exports = { index };
+async function update(req, res) {
+    try {
+        const donation = await DonationService.update(parseInt(req.params.id))
+        res.status(200).json({'updated': donation})
+    } catch (error) {
+        res.status(404).json({'error': error.message})
+    }
+};
+
+module.exports = { 
+    index,
+    update,
+};
