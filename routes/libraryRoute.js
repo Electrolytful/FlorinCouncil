@@ -11,9 +11,10 @@ router.get("/mybooks", libraryController.showUserBooks);
 router.get("/:book_name", libraryController.show);
 
 // Create a new loan.
-router.post("/:book_id", libraryController.create);
+router.post("/:book_id/loan", libraryController.loanBook);
 
 // Update loan to complete.
-router.patch("/:loan_id", libraryController.update);
+router.post("/:book_id/return", libraryController.returnBook);
+
 
 module.exports = router;

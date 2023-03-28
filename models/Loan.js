@@ -1,19 +1,23 @@
 const db = require("../database/dbConnect.js");
 
 class Loan {
-  constructor(id, book_id, user_id, date, complete) {
+  constructor(id, book_id, book_name, author, year, user_id, date, complete) {
     this.id = id;
     this.book_id = book_id;
     this.user_id = user_id;
     this.date = date;
+    this.book_name = book_name;
+    this.author = author;
+    this.year = year;
     this.complete = complete;
+
   }
 }
 
 class LoanService {
   static mapToModel(dbResponse) {
     return dbResponse.rows.map(
-      (e) => new Loan(e.id, e.book_id, e.user_id, e.data, e.complete)
+      (e) => new Loan(e.id, e.book_id, e.title, e.author, e.year, e.user_id, e.data, e.complete)
     );
   }
 
@@ -21,32 +25,34 @@ class LoanService {
     const loans = await db.query(
       `
         SELECT *
-        FROM loans
-        WHERE user_id = $1`,
+        FROM loans l
+        JOIN books b on l.book_id = b.id 
+        WHERE l.user_id = $1
+        ORDER BY l.complete, l.id DESC`,
       [user_id]
     );
     return LoanService.mapToModel(loans);
   }
 
-  static async create(data) {
+  static async create(user_id, book_id) {
     const loan = await db.query(
       `
         INSERT INTO loans (book_id, user_id, loan_date)
-        VALUES ($1, $2, $3)
+        VALUES ($1, $2, NOW())
         RETURNING *`,
-      [data.book_id, data.user_id, data.date]
+      [book_id, user_id]
     );
     return LoanService.mapToModel(loan);
   }
 
-  static async update(id) {
+  static async update(book_id) {
     const loan = await db.query(
       `
         UPDATE loans
         SET complete = $1
-        WHERE id = $2
+        WHERE book_id = $2 AND complete = false
         RETURNING *`,
-      [true, id]
+      [true, book_id]
     );
     return LoanService.mapToModel(loan);
   }
