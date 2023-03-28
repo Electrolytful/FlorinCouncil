@@ -1,111 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
-    />
-    <link 
-        rel="stylesheet" 
-        href="/public/css/register.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="/public/css/register.css" />
     <title>Register</title>
 </head>
+
 <body>
     <h1 style="text-align: center;">Register</h1>
 
     <!-- if error returned by server when registering then show those errors in list -->
     <ul style="text-align: center;">
-        <% if(typeof errors != 'undefined') { %>
-            <% errors.forEach(err => { %>
-                <li><%= err.message %></li>
-          <%  }) %>
-       <% } %>
+        <% if(typeof errors !='undefined' ) { %>
+            <% errors.forEach(err=> { %>
+                <li>
+                    <%= err.message %>
+                </li>
+                <% }) %>
+                    <% } %>
     </ul>
 
     <!-- register form -->
     <form action="/users/register" method="POST" style="text-align: center;">
         <div>
-            <input 
-                type="text" 
-                id="username" 
-                name="username" 
-                placeholder="Username" 
-                required
-            />
+            <input type="text" id="username" name="username" placeholder="Username" required />
         </div>
         <div>
-            <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                placeholder="Full Name" 
-                required
-            />
+            <input type="text" id="name" name="name" placeholder="Full Name" required />
         </div>
         <div>
-            <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                placeholder="Email" 
-                required
-            />
+            <input type="email" id="email" name="email" placeholder="Email" required />
         </div>
         <div>
-            <input 
-                type="text" 
-                id="address" 
-                name="address" 
-                placeholder="Address" 
-                required
-            />
+            <input type="text" id="address" name="address" placeholder="Address" required />
         </div>
         <div>
-            <input 
-                type="text" 
-                id="phone" 
-                name="phone" 
-                placeholder="Phone Number" 
-                required
-            />
+            <input type="text" id="phone" name="phone" placeholder="Phone Number" required />
         </div>
         <div>
-            <input 
-                type="date" 
-                id="dob" 
-                name="dob" 
-                placeholder="Date Of Birth" 
-                required
-            />
+            <input type="date" id="dob" name="dob" placeholder="Date Of Birth" required />
         </div>
         <div>
-            <input 
-                type="password" 
-                id="password" 
-                name="password" 
-                placeholder="Password" 
-                required
-            />
+            <input type="password" id="password" name="password" placeholder="Password" required />
         </div>
         <div>
-            <input 
-                type="password" 
-                id="password2" 
-                name="password2" 
-                placeholder="Confirm Password" 
-                required
-            />
+            <input type="password" id="password2" name="password2" placeholder="Confirm Password" required />
         </div>
         <div>
-            <input type="submit" value="Register"/>
+            <input type="submit" value="Register" />
         </div>
         <div>
             <a href="/users/login">Already registered? Login here</a>
         </div>
     </form>
 </body>
+
 </html>
