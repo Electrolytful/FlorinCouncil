@@ -90,6 +90,42 @@ describe("Library API Server", () => {
                 expect(res.statusCode).toBe(200);
                 expect(res.body.length).toBe(1);
             });
+
+            it('Successfully creates a loan.', async () => {
+                givenBooksExist();
+                givenUsers();
+                const service = {
+                    "user_id": 1,
+                    "book_id": 1,
+                    "date": "2023-03-28"
+                  };
+                const res = await request(app)
+                .post('/library/1')
+                .send(service)
+                expect(res.statusCode).toBe(201);
+                expect(res.body.created[0].user_id).toBe(1);
+                expect(res.body.created[0].book_id).toBe(1);
+            });
+
+            it('Sucessfully completes a loan.', async () => {
+                givenBooksExist();
+                givenUsers();
+                const service = {
+                    "user_id": 1,
+                    "book_id": 1,
+                    "date": "2023-03-28"
+                  };
+                const postRes = await request(app)
+                .post('/library/1')
+                .send(service)
+
+                const patchRes = await request(app)
+                .patch('/library/1')
+                
+                expect(patchRes.statusCode).toBe(200);
+                expect(patchRes.body.updated[0].complete).toBe(true);
+
+            })
         });
     });
 
