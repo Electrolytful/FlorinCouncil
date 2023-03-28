@@ -17,10 +17,14 @@
 <body>
     <h1 style="text-align: center;">Login</h1>
 
-    <div style="text-align: center;">
+    <!-- error and success messages -->
+    <ul id="info-messages" style="text-align: center;"> 
         <%= messages.success_msg %>
         <%= messages.logged_out %>
+        <%= messages.no_email %>
+        <%= messages.incorrect_password %>
     </ul>
+    
     <!-- login form -->
     <form action="/users/login" method="POST" style="text-align: center;">
         <div>
