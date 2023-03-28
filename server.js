@@ -4,6 +4,8 @@ require('dotenv').config();
 const express = require('express');
 const usersRoute = require('./routes/usersRoute.js');
 const libraryRoute = require('./routes/libraryRoute.js');
+const localAttractionsRoute = require('./routes/localAttractionsRoute.js');
+
 const session = require('express-session');
 const flash = require('express-flash');
 const store = new session.MemoryStore();
@@ -49,6 +51,7 @@ app.use('/users', usersRoute);
 // Library route.
 app.use('/library', libraryRoute);
 
-
+// Local attractions route.
+app.use('/visit', localAttractionsRoute);
 
 module.exports = app;

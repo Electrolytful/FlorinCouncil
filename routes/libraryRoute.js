@@ -8,7 +8,7 @@ router.get('/', authenticator, libraryController.index);
 // Show loans for given user.
 router.get('/mybooks', libraryController.showUserBooks);
 
-router.get('/:book_id', libraryController.show);
+router.get('/:book_name', libraryController.show);
 
 // Create a new loan.
 router.post('/:book_id', libraryController.create);

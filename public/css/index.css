@@ -4,10 +4,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Antic Slab', serif;
 }
 
 body {
     background-color: #210B2C;
+
 }
 
 .background {
@@ -73,13 +75,98 @@ header {
     color: bisque;
 }
 
-.landmarks {
-    margin-top: 400px;
-    margin-bottom: 100px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-    gap: 20%;
+#landmark-title {
+    display: flex;
+    margin-top: 300px;
+    color: white;
+    justify-content: center ;
+    font-family: 'Raleway', bold;
+}
 
+
+
+                                /* Landmark styles */
+.image-container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.image-wrapper {
+    position: relative;
+    margin: 0 10px;
+}
+
+.image-wrapper img {
+    display: block;
+    max-width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.1);
+    
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-overlay:hover {
+    opacity: 1;
+}
+
+.image-text {
+    color: white;
+    font-size: 100%
+    ;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+                                    /* Library style */
+
+/* .lib-container {
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+} */
+
+#lib-title{
+    padding-top: 200px;
+    padding-bottom: 40px;
+    text-align: center;
+    color: white;
+    font-family: 'Raleway', bold;
+}
+
+.lib-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.lib-text {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+    
+    
 }
