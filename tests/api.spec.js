@@ -62,6 +62,34 @@ describe("Library API Server", () => {
                 expect(res.statusCode).toBe(200);
                 expect(res.body.length).toBe(1);
             });
+
+            it('Returns information of specific book.', async () => {
+                givenBooksExist();
+                const res = await request(app).get('/library/The Lord of the Rings')
+                expect(res.statusCode).toBe(200);
+                expect(res.body[0].author).toBe('J.R.R. Tolkien');
+                expect(res.body[0].title).toBe('The Lord of the Rings');
+                expect(res.body[0].year).toBe('1955');
+            });
+
+            it('Returns 404 status code if specific book does not exist.', async () => {
+                givenBooksExist();
+                const res = await request(app).get('/library/Foundation')
+                expect(res.statusCode).toBe(404);
+                expect(res.body.length).toBe(0);
+            });
+
+            it('Returns a collection of loans by user.', async () => {
+                givenBooksExist();
+                givenUsers();
+                givenLoans();
+                const res = await request(app)
+                .get('/library/mybooks')
+                .set({'user-id':'1'})
+
+                expect(res.statusCode).toBe(200);
+                expect(res.body.length).toBe(1);
+            });
         });
     });
 

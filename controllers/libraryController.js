@@ -13,8 +13,13 @@ async function index(req, res) {
 
 async function show(req, res) {
     try {
-        const book = await BookService.show(parseInt(req.params.book_id));
-        res.status(200).json(book)
+        const book = await BookService.show(req.params.book_name);
+        if (book.length == 0) {
+            res.status(404).json(book)
+        }
+        else {
+            res.status(200).json(book)
+        }
     } catch (error) {
         res.status(404).json({'error': error.message})
     }

@@ -24,12 +24,12 @@ class BookService {
         return BookService.mapToModel(books)
     }
 
-    static async show(id) {
+    static async show(bookName) {
         const book = await db.query(`
         SELECT *
         FROM books
-        WHERE id = $1`,
-        [id])
+        WHERE title = $1`,
+        [bookName])
         return BookService.mapToModel(book)
     }
 }
