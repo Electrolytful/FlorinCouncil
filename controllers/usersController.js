@@ -11,7 +11,6 @@ function loadLogin(req, res) {
 }
 
 function loadDashboard(req, res) {
-    console.log(req.session);
     res.render('dashboard', {user: req.session.user.username});
 }
 
@@ -20,25 +19,23 @@ async function registerUser(req, res) {
 
     // error handling if form sent by user has any errors
     let errors = [];
-
-    if(!username || !name || !email || !address || !phone || !dob || !password || !password2) {
-        errors.push({ message: "Please enter all fields" });
-    }
+    const currentYear = getCurrentYear();
 
     if(password.length < 6) {
         errors.push({ message: "Password should be at least 6 characters" });
     }
-
     if(password != password2) {
         errors.push({ message: "Passwords do not match" });
     }
-
+    if(Number(dob.slice(0,4)) > currentYear - 16) {
+        errors.push({ message: "Current user is too young" })
+    }
     if(errors.length) {
         res.render('register', { errors });
     } else {
         const checkUser = await User.showUserByEmail(email);
         if(checkUser) {
-            errors.push({ message: "Email already registered"})
+            errors.push({ message: "Email already registered"});
             res.render('register', { errors });
         } else {
             const hashedPassword = await bcrypt.hash(password, 10);
@@ -52,10 +49,6 @@ async function registerUser(req, res) {
 
 async function loginUser(req, res) {
     const data = req.body;
-
-    if(!data.email || !data.password) {
-        return res.status(422).json({ error: "Incorrect input" });
-    }
 
     try {
         const user = await User.showUserByEmail(data.email);
@@ -77,7 +70,7 @@ async function loginUser(req, res) {
         user.password = null;
         req.session.authenticated = true;
         req.session.user = user;
-        res.render('dashboard', { user: req.session.user.username });
+        res.redirect('/users/dashboard');
     } catch (err) {
         return res.status(403).json({ error: err.message });
     }
@@ -89,6 +82,17 @@ async function logoutUser(req, res) {
     req.flash('logged_out', "Logged out successfully!")
     res.redirect('/users/login');
 }
+
+
+
+function getCurrentYear() {
+    // getting current year to use in error checking
+    const year = new Date();
+    let yyyy = year.getFullYear();
+    
+    return yyyy;
+}
+
 
 
 

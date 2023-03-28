@@ -1,8 +1,9 @@
 const { Router } = require('express');
 const libraryController = require('../controllers/libraryController.js');
+const authenticator = require('../middleware/authenticator.js');
 const router = Router();
 
-router.get('/', libraryController.index);
+router.get('/', authenticator, libraryController.index);
 
 // Show loans for given user.
 router.get('/mybooks', libraryController.showUserBooks);
