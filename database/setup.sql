@@ -58,7 +58,7 @@ CREATE TABLE posts(
 
 CREATE TABLE recycling_items(
     id INT GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR(155) NOT NULL,
+    title VARCHAR(155) NOT NULL,
     description VARCHAR(1500) NOT NULL,
     date DATE NOT NULL,
     condition VARCHAR(50) NOT NULL,
@@ -141,7 +141,7 @@ VALUES
     ('Achilles statue', 'Achilles Statue is an awe-inspiring monument that captures the heroic spirit of one of history''s greatest warriors. Towering over its surroundings, the statue depicts the legendary Greek hero in all his glory, his rippling muscles and fierce expression a testament to his legendary courage and strength. Set against a backdrop of lush greenery and tranquil water features, Achilles Statue is a true marvel of art and architecture, drawing visitors from far and wide to marvel at its beauty and pay homage to the bravery of this iconic figure. Whether you''re a history buff, an art enthusiast, or simply seeking inspiration, Achilles Statue is a must-see destination that will leave you in awe of its magnificence and significance.', 'https://github.com/Electrolytful/FlorinCouncil/blob/development/public/img/achilles_statue.jpg?raw=true');
 
 INSERT INTO recycling_items
-    (name, description, date, condition, picture_url)
+    (title, description, date, condition, picture_url)
 VALUES
     ('Harry Potter Box Set', 'This box includes a collection of all seven books in the Harry Potter series written by J.K. Rowling. The set is perfect for fans of all ages and includes the beloved stories of the wizarding world, featuring the adventures of Harry, Ron, and Hermione. This set is in perfect condition and is opportunity for anyone who loves fantasy, magic, and adventure.', '2023-03-28', 'used', 'https://i.ebayimg.com/images/g/d9IAAOSw4-xkDwSB/s-l1600.jpg'),
     ('Small Dining Table', 'This small dining table is a compact and functional piece of furniture that is perfect for small spaces. It comfortably seats up to four people and is ideal for intimate meals with family or friends. The table is sturdy and shows subtle signs of previous use. Nevertheless, its simple and elegant design will complement any decor style and make a great addition to any home.', '2023-01-25', 'used', 'https://for-sale.used-secondhand.co.uk/media/secondhand/images/67125/tables-east-london/roman-numerals-detail-tables-445.jpg'),
