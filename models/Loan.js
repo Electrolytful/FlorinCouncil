@@ -17,7 +17,7 @@ class Loan {
 class LoanService {
   static mapToModel(dbResponse) {
     return dbResponse.rows.map(
-      (e) => new Loan(e.id, e.book_id, e.title, e.author, e.year, e.user_id, e.data, e.complete)
+      (e) => new Loan(e.id, e.book_id, e.title, e.author, e.year, e.user_id, e.date, e.complete)
     );
   }
 
