@@ -5,6 +5,7 @@ const express = require('express');
 const db = require('./database/dbConnect.js');
 const usersRoute = require('./routes/usersRoute.js');
 const libraryRoute = require('./routes/libraryRoute.js');
+const localAttractionsRoute = require('./routes/localAttractionsRoute.js');
 
 const session = require('express-session');
 const flash = require('express-flash');
@@ -50,5 +51,8 @@ app.use('/users', usersRoute);
 
 // Library route.
 app.use('/library', libraryRoute);
+
+// Local attractions route.
+app.use('/visit', localAttractionsRoute);
 
 module.exports = app;
