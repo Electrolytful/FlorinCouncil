@@ -51,6 +51,7 @@ describe("Library API Server", () => {
             givenBooksExist();
 
             const res = await request(app).get('/library')
+            console.log(res)
             expect(res.statusCode).toBe(200);
             expect(res.body.length).toBe(2);
         });
