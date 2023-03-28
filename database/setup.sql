@@ -59,10 +59,11 @@ CREATE TABLE posts(
 CREATE TABLE recycling_items(
     id INT GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(155) NOT NULL,
-    description VARCHAR(300) NOT NULL,
+    description VARCHAR(1500) NOT NULL,
     date DATE NOT NULL,
     condition VARCHAR(50) NOT NULL,
-    donated BOOLEAN NOT NULL,
+    donated BOOLEAN DEFAULT false,
+    picture_url VARCHAR(2048),
     PRIMARY KEY (id)
 );
 
@@ -138,3 +139,10 @@ VALUES
     ('City Museum', 'Our museum offers a fascinating glimpse into the history, culture, and traditions of our community. As you explore our exhibits, you''ll discover artifacts and stories that showcase the unique heritage of our region. From interactive displays that bring history to life, to artwork and photographs that capture the essence of our community, our museum has something for everyone. Our knowledgeable staff are always on hand to answer questions and provide insight into the exhibits, and we offer a variety of educational programs and tours for visitors of all ages. Whether you''re a lifelong resident or a first-time visitor, our local museum offers a wonderful opportunity to learn and connect with the rich history and culture of our community. We look forward to welcoming you and sharing our stories with you.','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuw3dq5jMytOWCz-_uNucTA2InKX4DOm48gA&usqp=CAU'),
     ('Florin Park', 'Florin Park is a charming and serene destination nestled in the heart of a bustling city, offering a lush green oasis where visitors can relax, unwind, and soak in the natural beauty of the surroundings. With its manicured gardens, towering trees, and tranquil water features, Florin Park is the perfect spot for a peaceful stroll, a picnic with loved ones, or a quiet moment of reflection amidst the hustle and bustle of city life. Whether you''re a local resident or a traveler passing through, Florin Park is a must-visit destination that will leave you feeling refreshed, rejuvenated, and inspired.', 'https://github.com/Electrolytful/FlorinCouncil/blob/development/public/img/park.jpg?raw=true'),
     ('Achilles statue', 'Achilles Statue is an awe-inspiring monument that captures the heroic spirit of one of history''s greatest warriors. Towering over its surroundings, the statue depicts the legendary Greek hero in all his glory, his rippling muscles and fierce expression a testament to his legendary courage and strength. Set against a backdrop of lush greenery and tranquil water features, Achilles Statue is a true marvel of art and architecture, drawing visitors from far and wide to marvel at its beauty and pay homage to the bravery of this iconic figure. Whether you''re a history buff, an art enthusiast, or simply seeking inspiration, Achilles Statue is a must-see destination that will leave you in awe of its magnificence and significance.', 'https://github.com/Electrolytful/FlorinCouncil/blob/development/public/img/achilles_statue.jpg?raw=true');
+
+INSERT INTO recycling_items
+    (name, description, date, condition, picture_url)
+VALUES
+    ('Harry Potter Box Set', 'This box includes a collection of all seven books in the Harry Potter series written by J.K. Rowling. The set is perfect for fans of all ages and includes the beloved stories of the wizarding world, featuring the adventures of Harry, Ron, and Hermione. This set is in perfect condition and is opportunity for anyone who loves fantasy, magic, and adventure.', '2023-03-28', 'used', 'https://i.ebayimg.com/images/g/d9IAAOSw4-xkDwSB/s-l1600.jpg'),
+    ('Small Dining Table', 'This small dining table is a compact and functional piece of furniture that is perfect for small spaces. It comfortably seats up to four people and is ideal for intimate meals with family or friends. The table is sturdy and shows subtle signs of previous use. Nevertheless, its simple and elegant design will complement any decor style and make a great addition to any home.', '2023-01-25', 'used', 'https://for-sale.used-secondhand.co.uk/media/secondhand/images/67125/tables-east-london/roman-numerals-detail-tables-445.jpg'),
+    ('Bosch Dishwasher (working)', 'This fully functional equipment features a spacious interior that can accommodate up to 14 place settings and a variety of wash cycles, including a quick wash cycle that cleans dishes in just 30 minutes. The dishwasher is also equipped with a noise-reducing system, ensuring it operates quietly and without disturbing your daily routine. Still in very good condition.', '2023-03-28', 'used','https://imagedelivery.net/ePR8PyKf84wPHx7_RYmEag/ee1b6bfb-c68a-4a39-4695-ff7dc785d100/86');
