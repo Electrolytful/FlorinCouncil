@@ -183,35 +183,41 @@ header {
 
 
                                     /* Recycling style */
-.rec-container {
-    justify-content: center;
-}
 
 #recycling-title {
     display: flex;
     color: #55286F;
     font-size: 300%;
     justify-content: center;
+    padding: 0em 0em 2em 0em;
     font-family: 'Raleway', bold;
 }
 
 #rec-title {
+    display: flex;
     text-align: center;
     color: #55286F;
     font-size: 150%;
+    padding: 3em 0em 0em 0em;
     justify-content: center;
     font-family: 'Raleway', bold;
 }
 
 .rec-image {
-    display: flex;
     justify-content: center;
     text-align: center;
-    width: 25%
+}
+
+#rec-img {
+    width: 25%;
+    height: 25%;
 }
 
 .rec-text {
+    color: #55286F;
+    font-size: 20px;
     text-align: center;
+    padding: 3em 1em 1em 3em;
 }
 
 .redirect-link {
