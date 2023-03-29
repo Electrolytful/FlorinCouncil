@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <a href="/users/dashboard">Dashboard</a>
+        <a href="/library/mybooks">My books</a>
+        <br />
+
+        <p>Recycling Center - Donations</p>
+    
+        <ul>
+            <% donations.forEach(function(donation){ %>
+                <form action="/recycling/donations/<%= donation.id %>" method="POST">
+                    <img src="<%= donation.picture_url %>" width="100" height="100" alt="<%= donation.title %>"/>
+                    <br>
+                    <h3><%= donation.title %></h3>
+                    <br>
+                    <p><%= donation.description %></p>
+                    <br>
+                    <button type="submit"> Click me </button>
+                </form>
+            <% }); %>
+        </ul>
+    </body>
+</html>

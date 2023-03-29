@@ -17,7 +17,7 @@ class Loan {
 class LoanService {
   static mapToModel(dbResponse) {
     return dbResponse.rows.map(
-      (e) => new Loan(e.id, e.book_id, e.title, e.author, e.year, e.user_id, e.data, e.complete)
+      (e) => new Loan(e.id, e.book_id, e.title, e.author, e.year, e.user_id, e.date, e.complete)
     );
   }
 
@@ -35,26 +35,34 @@ class LoanService {
   }
 
   static async create(user_id, book_id) {
-    const loan = await db.query(
-      `
-        INSERT INTO loans (book_id, user_id, loan_date)
-        VALUES ($1, $2, NOW())
-        RETURNING *`,
-      [book_id, user_id]
-    );
-    return LoanService.mapToModel(loan);
+    try {
+      const loan = await db.query(
+        `
+          INSERT INTO loans (book_id, user_id, loan_date)
+          VALUES ($1, $2, NOW())
+          RETURNING *`,
+        [book_id, user_id]
+      );
+      return LoanService.mapToModel(loan);
+    } catch (error) {
+      return error.message
+    }
   }
 
   static async update(book_id) {
-    const loan = await db.query(
-      `
-        UPDATE loans
-        SET complete = $1
-        WHERE book_id = $2 AND complete = false
-        RETURNING *`,
-      [true, book_id]
-    );
-    return LoanService.mapToModel(loan);
+    try {
+      const loan = await db.query(
+        `
+          UPDATE loans
+          SET complete = $1
+          WHERE book_id = $2 AND complete = false
+          RETURNING *`,
+        [true, book_id]
+      );
+      return LoanService.mapToModel(loan);
+    } catch (error) {
+      return error.message
+    }
   }
 }
 
