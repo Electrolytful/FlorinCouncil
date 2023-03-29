@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&family=League+Spartan&family=Lobster+Two&family=Raleway&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    background-color: #E9F1F7;
+    gap: 2%;
+    overflow-x: hidden;
+}
+
+input {
+    width: 100%;
+}
+
+.input-group {
+    font-family: 'Raleway', sans-serif;
+}
+
+.form-container {
+    background-color: #55286F;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    color: #E9F1F7;
+    border-radius: 30px;
+}
+
+.form-content {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    gap: 5%;
+}
+
+.form-row div {
+    flex: 1;
+}
+
+#home {
+    padding: 20px;
+    margin-left: -90%;
+}
+
+#title {
+    font-family: 'Raleway', sans-serif;
+    height: 70px;
+    padding-top: 10%;
+}
+
+#form {
+    width: 100%;
+}
+
+#errors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+  background-color: #55286F;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #D8B4E2;
+}
