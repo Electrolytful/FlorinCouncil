@@ -24,25 +24,6 @@ body {
     filter: blur(8px);
 }
 
-header {
-    display: flex;
-    position: fixed;
-    justify-content: space-between;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 20px;
-    align-items: center;
-    z-index: 1000;
-}
-
-.logo {
-    font-family: 'Lobster Two', cursive;
-    font-size: 50px;
-    color: #55286F;
-    cursor: pointer;
-}
-
 .home {
     display: flex;
     position: relative;
