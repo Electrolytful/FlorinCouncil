@@ -5,7 +5,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Antic Slab', serif;
-    color: #210B2C;
 }
 
 body {
@@ -23,7 +22,7 @@ body {
     width: 100vw;
     height: 100vh;
     min-height: 100vh;
-    filter: blur(8px);
+    filter: blur(2px);
 }
 
 header {
@@ -68,19 +67,20 @@ header {
     font-family: 'Raleway';
     font-size: 54px;
     color: #55286F;
-    left: 20px;
 }
 
 #intro-para {
-    font-size: 40px;
+    font-size: 36px;
     font-family: 'Antic Slab', serif;
-    color: bisque;
+    color: #E9F1F7;
+    text-align: center;
 }
 
 #landmark-title {
     display: flex;
     margin-top: 300px;
-    color: white;
+    color: #55286F;
+    font-size: 300%;
     justify-content: center ;
     font-family: 'Raleway', bold;
 }
@@ -103,20 +103,21 @@ header {
 .image-wrapper img {
     display: block;
     max-width: 100%;
+    padding: 0em 1.5em 0em 1.5em;
     transition: transform 0.3s ease;
 }
 
 .image-wrapper:hover img {
     transform: scale(1.1);
-    
 }
 
 .image-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 30px;
     opacity: 0;
     transition: opacity 0.3s ease;
     background-color: rgba(0, 0, 0, 0.5);
@@ -129,11 +130,15 @@ header {
     opacity: 1;
 }
 
+.home-link {
+    font-family: 'Raleway';
+    font-size: 54px;
+    color: #55286F;
+}
+
 .image-text {
-    color: white;
-    font-size: 100%
-    ;
-    font-weight: bold;
+    color: #E9F1F7;
+    font-size: 100%;
     text-align: center;
 }
 
@@ -148,27 +153,44 @@ header {
 } */
 
 #lib-title{
-    padding-top: 200px;
-    padding-bottom: 40px;
-    text-align: center;
-    color: white;
+    display: flex;
+    margin-top: 300px;
+    color: #55286F;
+    font-size: 300%;
+    justify-content: center ;
     font-family: 'Raleway', bold;
+    padding-bottom: 3em;
 }
 
 .lib-image {
     width: 100%;
+    border-radius: 30px;
     height: 500px;
     object-fit: cover;
 }
 
 .lib-text {
-    color: white;
+    color: #55286F;
     font-size: 20px;
     text-align: center;
     padding: 20px;
     padding-left: 100px;
     padding-right: 100px;
     padding-bottom: 100px;
-    
-    
+}
+
+.text-padding {
+    padding: 10em 0em 5em 0em;
+}
+
+
+                                    /* Recycling style */
+#recycling-title {
+    display: flex;
+    margin-top: 300px;
+    color: #55286F;
+    font-size: 300%;
+    justify-content: center ;
+    font-family: 'Raleway', bold;
+    padding-bottom: 3em;
 }
