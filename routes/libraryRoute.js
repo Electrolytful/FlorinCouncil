@@ -16,5 +16,4 @@ router.post("/:book_id/loan", libraryController.loanBook);
 // Update loan to complete.
 router.post("/:book_id/return", libraryController.returnBook);
 
-
 module.exports = router;

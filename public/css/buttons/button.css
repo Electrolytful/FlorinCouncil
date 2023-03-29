@@ -1,53 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100&display=swap');
-
-
-button {
-  font-size: 30px;
-  margin-left: 50px;
-  color: #1f1c1c;
+.button {
+  background-color: #55286F;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
   cursor: pointer;
+  display: inline-block;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
   position: relative;
-  border: none;
-  background: none;
-  text-transform: uppercase;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-duration: 400ms;
-  transition-property: color;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-button:focus,
-button:hover {
-  color: #000000;
-}
-
-button:focus:after,
-button:hover:after {
-  width: 100%;
-  left: 0%;
-}
-
-button:after {
-  content: "";
-  pointer-events: none;
-  bottom: -2px;
-  left: 50%;
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background-color: #cc1d1d;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-duration: 400ms;
-  transition-property: width, left;
-}
-
-#register-btn {
-  color: purple;
-  font-family: 'League Spartan', sans-serif;
-}
-
-#login-btn {
-  border: 2px solid purple;
-  background-color: purple;
-  color: white;
-  font-family: 'League Spartan', sans-serif;
+.button:hover,
+.button:focus {
+  background-color: #D8B4E2;
 }
