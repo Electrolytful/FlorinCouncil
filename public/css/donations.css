@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&family=League+Spartan&family=Lobster+Two&family=Raleway&display=swap');
+
+body {
+    background-color: #F5F5F5;
+    text-align: center;
+}
+
+em {
+    font-family: 'Raleway';
+    color: #55286F;
+    font-size: 100%;
+
+}
+
+.img-container {
+    padding: 1em 1.5em 0em 1.5em;
+    transition: transform 0.3s ease;
+}
+
+.img-size {
+    max-width: 20%;
+}
+
+#page-title {
+    display: flex;
+    color: #55286F;
+    font-size: 300%;
+    justify-content: center ;
+    margin-bottom: 0px;
+    padding-bottom: 0.2em;
+    font-family: 'Raleway', bold;
+}
+
+#donation-title {
+    display: flex;
+    color: #55286F;
+    font-size: 150%;
+    justify-content: center ;
+    font-family: 'Raleway', bold;
+}
+
+#donation-description {
+    color: #55286F;
+    font-size: 20px;
+    text-align: center;
+    padding: 0em 4em 0em 4em;
+    font-family: 'Antic Slab', serif;
+}
+
+hr {
+    width: 60%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+button {
+	background-color: transparent;
+	border-radius:8px;
+    border: 2px solid #6c4284;
+	display:inline-block;
+	cursor:pointer;
+	color:#6c4284;
+    font-family: 'Raleway', bold;
+	font-size: 16px;
+	padding: 0.5em 0.5em;
+	text-decoration:none;
+    margin-bottom: 1em;
+}
+button:hover {
+	background-color:#6c4284;
+	color:#E9F1F7;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
