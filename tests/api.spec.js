@@ -212,16 +212,15 @@ describe("Library API Server", () => {
         expect(res.length).toBe(1);
       });
     });
-    // describe("update", () => {
-    //   it("GIVEN donations WHEN updating donation THEN returns donation object", async () => {
-    //     let systemUnderTest = require("../models/Loan.js");
-    //     await givenDonationsExist();
+    describe("update", () => {
+      it("GIVEN donations WHEN updating donation THEN returns donation object", async () => {
+        let systemUnderTest = require("../models/Loan.js");
+        await givenDonationsExist();
 
-    //     const res = await systemUnderTest.update(1);
-    //     console.log(`this ${res}`)
-    //     expect(res.length).toBe(0);
-    //   });
-    // });
+        const res = await systemUnderTest.update(1);
+        expect(res.length).toBe(0);
+      });
+    });
   });
 
   describe("LocationService", () => {
@@ -254,6 +253,44 @@ describe("Library API Server", () => {
 
             const res = await request(app).get('/recycling/donations')
             expect(res.statusCode).toBe(200);
+        });
+      });
+    });
+
+    describe('/library', () => {
+      describe('GET', () => {
+  
+        it('Returns status code 200 if books exist.', async () => {
+          await givenBooksExist();
+
+          const res = await request(app).get('/library')
+          expect(res.statusCode).toBe(200);
+        });
+
+        it('Returns status code 200 if book name exist.', async () => {
+          await givenBooksExist();
+
+          const res = await request(app).get('/library/Random Book')
+          expect(res.statusCode).toBe(200);
+        });
+
+        it('Returns status code 404 if book name does not exist.', async () => {
+          await givenBooksExist();
+
+          const res = await request(app).get('/library/Random')
+          expect(res.statusCode).toBe(404);
+        });
+      });
+    });
+
+    describe('/visit', () => {
+      describe('GET', () => {
+  
+        it('Returns status code 200 if attractions exist.', async () => {
+          await givenAttractionsExist();
+
+          const res = await request(app).get('/visit')
+          expect(res.statusCode).toBe(200);
         });
       });
     });
