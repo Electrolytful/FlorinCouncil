@@ -3,7 +3,7 @@ const DonationService = require('../models/Donation.js');
 async function index(req, res) {
     try {
         const donations = await DonationService.showAll();
-        res.status(200).json(donations)
+        res.render("recycling_center/donations", { donations: donations})
     } catch (error) {
         res.status(500).json({'error': error.message})
     }
