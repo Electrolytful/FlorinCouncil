@@ -23,6 +23,7 @@ class DonationService {
         FROM recycling_items
         WHERE donated = false
         `)
+        console.log(donations.rows)
         return DonationService.mapToModel(donations)
     }
 
@@ -33,6 +34,7 @@ class DonationService {
         WHERE id = $2
         RETURNING *`,
         [true, id])
+        console.log(donation)
         return DonationService.mapToModel(donation)
     }
 }

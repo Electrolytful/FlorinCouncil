@@ -3,16 +3,22 @@ const DonationService = require('../models/Donation.js');
 async function index(req, res) {
     try {
         const donations = await DonationService.showAll();
-        res.render("recycling_center/donations", { donations: donations})
+        res.status(200).render("recycling_center/donations", { donations: donations})
     } catch (error) {
         res.status(500).json({'error': error.message})
     }
 };
 
-async function update(req, res) {
+async function donateItem(req, res) {
     try {
-        const donation = await DonationService.update(parseInt(req.params.id))
-        res.status(200).json({'updated': donation})
+        let splittedUrl = req.originalUrl.split('/');
+        let donationId = splittedUrl[splittedUrl.length -1];
+        console.log(req.originalUrl)
+        console.log(splittedUrl)
+        console.log(donationId)
+
+        await DonationService.update(donationId)
+        return await index(req,res);
     } catch (error) {
         res.status(404).json({'error': error.message})
     }
@@ -20,5 +26,5 @@ async function update(req, res) {
 
 module.exports = { 
     index,
-    update,
+    donateItem,
 };
