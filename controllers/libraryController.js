@@ -4,7 +4,7 @@ const LoanService = require("../models/Loan.js");
 async function index(req, res) {
   try {
     const books = await BookService.showAll();
-    res.render("library/libraryIndex", { books: books });
+    res.status(200).render("library/libraryIndex", { books: books });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -28,7 +28,7 @@ async function showUserBooks(req, res) {
     let userId = req.session.user.id;
     const books = await LoanService.showAll(parseInt(userId));
 
-    res.render("library/mybooks", { books: books });
+    res.status(200).render("library/mybooks", { books: books });
   } catch (error) {
     res.status(404).json({ error: error.message });
   }

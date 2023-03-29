@@ -23,6 +23,7 @@ class BookService {
         FROM BOOKS B
         WHERE B.ID NOT IN (SELECT BOOK_ID FROM LOANS WHERE COMPLETE = FALSE)
         `);
+
     return BookService.mapToModel(books);
   }
 
