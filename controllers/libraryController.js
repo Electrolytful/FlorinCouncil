@@ -4,8 +4,7 @@ const LoanService = require("../models/Loan.js");
 async function index(req, res) {
   try {
     const books = await BookService.showAll();
-    // Using json format temporarily for testing puposes.
-    res.status(200).json(books);
+    res.render("library/libraryIndex", { books: books });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -26,28 +25,38 @@ async function show(req, res) {
 
 async function showUserBooks(req, res) {
   try {
-    let userId = req.get("user-id");
+    let userId = req.session.user.id;
     const books = await LoanService.showAll(parseInt(userId));
 
-    res.status(200).json(books);
+    res.render("library/mybooks", { books: books });
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
 }
 
-async function create(req, res) {
+async function loanBook(req, res) {
   try {
-    const loan = await LoanService.create(req.body);
-    res.status(201).json({ created: loan });
+    let splittedUrl = req.originalUrl.split('/');
+    let bookId = splittedUrl[splittedUrl.length - 2];
+
+    let userId = req.session.user.id;
+
+    await LoanService.create(userId, bookId);
+
+    return await showUserBooks(req, res);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 }
 
-async function update(req, res) {
+async function returnBook(req, res) {
   try {
-    const loan = await LoanService.update(parseInt(req.params.loan_id));
-    res.status(200).json({ updated: loan });
+    let splittedUrl = req.originalUrl.split('/');
+    let bookId = splittedUrl[splittedUrl.length - 2];
+
+    await LoanService.update(bookId);
+
+    return await showUserBooks(req, res);
   } catch (error) {
     res.status(404).json({ error: error.message });
   }
@@ -56,7 +65,7 @@ async function update(req, res) {
 module.exports = {
   index,
   show,
-  create,
-  update,
+  loanBook,
+  returnBook,
   showUserBooks,
 };

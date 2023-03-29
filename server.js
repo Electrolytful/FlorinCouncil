@@ -4,6 +4,7 @@ const express = require("express");
 const usersRoute = require("./routes/usersRoute.js");
 const libraryRoute = require("./routes/libraryRoute.js");
 const localAttractionsRoute = require("./routes/localAttractionsRoute.js");
+const recyclingRoute = require('./routes/recyclingRoute.js');
 const session = require("express-session");
 const flash = require("express-flash");
 const store = new session.MemoryStore();
@@ -51,5 +52,8 @@ app.use("/library", libraryRoute);
 
 // Local attractions route.
 app.use("/visit", localAttractionsRoute);
+
+// Recycling donations route.
+app.use('/recycling', recyclingRoute);
 
 module.exports = app;
