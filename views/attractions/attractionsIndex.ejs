@@ -5,22 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visit now!</title>
+    <link rel="stylesheet" href="/css/attractions.css" />
+    
+    <title>Visit Florin County</title>
 </head>
 
-<body>
-    <a href="/users/dashboard">Dashboard</a>
-    <a href="/library">Library</a>
-    <br />
-    <h1>Locations</h1>
-   
-    <% attractions.forEach(function(attraction){ %>
-        <img src="<%= attraction.location_url %>" width="100" height="100" alt="<%= attraction.name %>"/>   
-        <h3><%= attraction.name %></h3>
-        <p><%= attraction.description %></p>
-        <br /><br /><br />
-    <% }); %>
+    <body>
+        <a href="/users/dashboard">Dashboard</a>
+        <a href="/library">Library</a>
+        <br />
+        <h1 id="page-title">Local Landmarks</h1>
     
-</body>
-
+        <% attractions.forEach(function(attraction){ %>
+            <div class="img-container">
+                <img class="img-size" src="<%= attraction.location_url %>" alt="<%= attraction.name %>"/>
+                <div class="img-overlay">
+                    <h3 id="location-title"><%= attraction.name %></h3>
+                </div>
+            </div>
+            <p id="location-description"><%= attraction.description %></p>
+            <br />
+            <hr>
+            <br />
+            <br />
+        <% }); %>
+    </body>
 </html>
