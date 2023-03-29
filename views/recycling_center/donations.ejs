@@ -16,7 +16,7 @@
     
         <ul>
             <% donations.forEach(function(donation){ %>
-                <form action="/recycling/donations/<% donation.id %>" method="POST">
+                <form action="/recycling/donations/<%= donation.id %>" method="POST">
                     <img src="<%= donation.picture_url %>" width="100" height="100" alt="<%= donation.title %>"/>
                     <br>
                     <h3><%= donation.title %></h3>

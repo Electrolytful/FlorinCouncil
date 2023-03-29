@@ -13,9 +13,6 @@ async function donateItem(req, res) {
     try {
         let splittedUrl = req.originalUrl.split('/');
         let donationId = splittedUrl[splittedUrl.length -1];
-        console.log(req.originalUrl)
-        console.log(splittedUrl)
-        console.log(donationId)
 
         await DonationService.update(donationId)
         return await index(req,res);

@@ -5,12 +5,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Antic Slab', serif;
+    color: #210B2C;
 }
 
 body {
-    background-color: #210B2C;
+    background-color: #F5F5F5;
 
 }
+
 
 .background {
     display: inline-block;
@@ -63,8 +65,8 @@ header {
 }
 
 #title {
-    font-family: 'Raleway', bold;
-    font-size: 64px;
+    font-family: 'Raleway';
+    font-size: 54px;
     color: #55286F;
     left: 20px;
 }
