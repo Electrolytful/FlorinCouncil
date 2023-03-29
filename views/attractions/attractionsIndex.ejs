@@ -13,14 +13,18 @@
     <a href="/library">Library</a>
     <br />
     <h1>Locations</h1>
-   
+
     <% attractions.forEach(function(attraction){ %>
-        <img src="<%= attraction.location_url %>" width="100" height="100" alt="<%= attraction.name %>"/>   
-        <h3><%= attraction.name %></h3>
-        <p><%= attraction.description %></p>
+        <img src="<%= attraction.location_url %>" width="100" height="100" alt="<%= attraction.name %>" />
+        <h3>
+            <%= attraction.name %>
+        </h3>
+        <p>
+            <%= attraction.description %>
+        </p>
         <br /><br /><br />
-    <% }); %>
-    
+        <% }); %>
+
 </body>
 
 </html>

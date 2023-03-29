@@ -5,11 +5,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Antic Slab', serif;
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: #F5F5F5;
-
+    background-color: #E9F1F7;
 }
 
 
@@ -62,13 +62,13 @@ body {
     margin-top: 300px;
     color: #55286F;
     font-size: 300%;
-    justify-content: center ;
+    justify-content: center;
     font-family: 'Raleway', bold;
 }
 
 
 
-                                /* Landmark styles */
+/* Landmark styles */
 .image-container {
     margin-top: 100px;
     display: flex;
@@ -125,7 +125,7 @@ body {
 
 
 
-                                    /* Library style */
+/* Library style */
 
 /* .lib-container {
     display: flex;
@@ -133,12 +133,12 @@ body {
     margin-top: 20px;
 } */
 
-#lib-title{
+#lib-title {
     display: flex;
     margin-top: 200px;
     color: #55286F;
     font-size: 300%;
-    justify-content: center ;
+    justify-content: center;
     font-family: 'Raleway', bold;
     padding-bottom: 3em;
 }
@@ -163,7 +163,7 @@ body {
 }
 
 
-                                    /* Recycling style */
+/* Recycling style */
 
 #recycling-title {
     display: flex;
@@ -205,4 +205,12 @@ body {
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
 }
