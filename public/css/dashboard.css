@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&family=League+Spartan&family=Lobster+Two&family=Raleway&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E9F1F7;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 30%;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 140px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    font-size: 90px;
+    font-family: 'Antic Slab', serif;
+    color: #E9F1F7;
+    background-color: #55286F;
+    width: 300px;
+    height: 260px;
+}
+
+#welcome {
+    font-family: 'Raleway', sans-serif;
+    color: #55286F;
+}
+
+#library {
+    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+}
+
+#attractions {
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
+
+#recycling {
+    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+}
+
+/* hoer effect for boxes */
+.hover-effect {
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
+
+.hover-effect:hover,
+.hover-effect:focus,
+.hover-effect:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}

@@ -148,35 +148,35 @@ describe("Library API Server", () => {
       });
     });
 
-      // it("GIVEN books to be lent WHEN borrowing an unexisting book THEN book is not reserved", async () => {
-      //   let systemUnderTest = require("../models/Loan.js");
-      //   await givenUsers();
-      //   await givenBooksExist();
+    // it("GIVEN books to be lent WHEN borrowing an unexisting book THEN book is not reserved", async () => {
+    //   let systemUnderTest = require("../models/Loan.js");
+    //   await givenUsers();
+    //   await givenBooksExist();
 
-      //   const res = await systemUnderTest.create(1, 4);
+    //   const res = await systemUnderTest.create(1, 4);
 
-      //   expect(res.length).toBe(1);
+    //   expect(res.length).toBe(1);
 
-      //   // TODO : Test is failing (shouldn't create the loan for an unexisting book)
-      //   let bookBorrowed = res[0];
-      //   expect(bookBorrowed.complete).toBe(false);
-      //   expect(bookBorrowed.user_id).toBe(1);
-      //   expect(bookBorrowed.book_id).toBe(1);
-      // });
+    //   // TODO : Test is failing (shouldn't create the loan for an unexisting book)
+    //   let bookBorrowed = res[0];
+    //   expect(bookBorrowed.complete).toBe(false);
+    //   expect(bookBorrowed.user_id).toBe(1);
+    //   expect(bookBorrowed.book_id).toBe(1);
+    // });
     describe("update", () => {
       it("GIVEN existing loan WHEN returning book THEN complete status is set to true", async () => {
-          let systemUnderTest = require("../models/Loan.js");
-          await givenUsers();
-          await givenBooksExist();
-          await givenLoans();
-  
-          const res = await systemUnderTest.update(1);
-  
-          expect(res.length).toBe(1);
+        let systemUnderTest = require("../models/Loan.js");
+        await givenUsers();
+        await givenBooksExist();
+        await givenLoans();
 
-          let returnedBook = res[0];
-          expect(returnedBook.complete).toBe(true);
-          expect(returnedBook.book_id).toBe(1);
+        const res = await systemUnderTest.update(1);
+
+        expect(res.length).toBe(1);
+
+        let returnedBook = res[0];
+        expect(returnedBook.complete).toBe(true);
+        expect(returnedBook.book_id).toBe(1);
       });
 
       it("GIVEN no loans WHEN returning book THEN throws error.", async () => {
@@ -236,7 +236,7 @@ describe("Library API Server", () => {
 
       it("GIVEN local attractions WHEN fetching all THEN location items are returned", async () => {
         let systemUnderTest = require("../models/Location.js");
-        await givenLocationsExist()
+        await givenLocationsExist();
 
         const res = await systemUnderTest.showAll();
 
@@ -245,55 +245,52 @@ describe("Library API Server", () => {
     });
   });
 
-  describe('/recycling', () => {
-    describe('GET', () => {
+  describe("/recycling", () => {
+    describe("GET", () => {
+      it("Returns status code 200 when donation items are available.", async () => {
+        await givenDonationsExist();
 
-        it('Returns status code 200 when donation items are available.', async () => {
-            await givenDonationsExist();
-
-            const res = await request(app).get('/recycling/donations')
-            expect(res.statusCode).toBe(200);
-        });
+        const res = await request(app).get("/recycling/donations");
+        expect(res.statusCode).toBe(200);
       });
     });
+  });
 
-    describe('/library', () => {
-      describe('GET', () => {
-  
-        it('Returns status code 200 if books exist.', async () => {
-          await givenBooksExist();
+  describe("/library", () => {
+    describe("GET", () => {
+      it("Returns status code 200 if books exist.", async () => {
+        await givenBooksExist();
 
-          const res = await request(app).get('/library')
-          expect(res.statusCode).toBe(200);
-        });
+        const res = await request(app).get("/library");
+        expect(res.statusCode).toBe(200);
+      });
 
-        it('Returns status code 200 if book name exist.', async () => {
-          await givenBooksExist();
+      it("Returns status code 200 if book name exist.", async () => {
+        await givenBooksExist();
 
-          const res = await request(app).get('/library/Random Book')
-          expect(res.statusCode).toBe(200);
-        });
+        const res = await request(app).get("/library/Random Book");
+        expect(res.statusCode).toBe(200);
+      });
 
-        it('Returns status code 404 if book name does not exist.', async () => {
-          await givenBooksExist();
+      it("Returns status code 404 if book name does not exist.", async () => {
+        await givenBooksExist();
 
-          const res = await request(app).get('/library/Random')
-          expect(res.statusCode).toBe(404);
-        });
+        const res = await request(app).get("/library/Random");
+        expect(res.statusCode).toBe(404);
       });
     });
+  });
 
-    describe('/visit', () => {
-      describe('GET', () => {
-  
-        it('Returns status code 200 if attractions exist.', async () => {
-          await givenAttractionsExist();
+  describe("/visit", () => {
+    describe("GET", () => {
+      it("Returns status code 200 if attractions exist.", async () => {
+        await givenAttractionsExist();
 
-          const res = await request(app).get('/visit')
-          expect(res.statusCode).toBe(200);
-        });
+        const res = await request(app).get("/visit");
+        expect(res.statusCode).toBe(200);
       });
     });
+  });
 
   async function givenBooksExist() {
     await testClient.query(
@@ -338,5 +335,4 @@ describe("Library API Server", () => {
       "INSERT INTO pg_temp.local_attractions (name, description, location_url) VALUES ('Florin Park', 'Florin Park is a charming and serene destination nestled in the heart of a bustling city, offering a lush green oasis where visitors can relax, unwind, and soak in the natural beauty of the surroundings. With its manicured gardens, towering trees, and tranquil water features, Florin Park is the perfect spot for a peaceful stroll, a picnic with loved ones, or a quiet moment of reflection amidst the hustle and bustle of city life. Whether you''re a local resident or a traveler passing through, Florin Park is a must-visit destination that will leave you feeling refreshed, rejuvenated, and inspired.', 'https://github.com/Electrolytful/FlorinCouncil/blob/development/public/img/park.jpg?raw=true')"
     );
   }
-
 });
