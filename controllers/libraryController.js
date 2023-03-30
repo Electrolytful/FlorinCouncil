@@ -36,7 +36,7 @@ async function showUserBooks(req, res) {
 
 async function loanBook(req, res) {
   try {
-    let splittedUrl = req.originalUrl.split('/');
+    let splittedUrl = req.originalUrl.split("/");
     let bookId = splittedUrl[splittedUrl.length - 2];
 
     let userId = req.session.user.id;
@@ -51,7 +51,7 @@ async function loanBook(req, res) {
 
 async function returnBook(req, res) {
   try {
-    let splittedUrl = req.originalUrl.split('/');
+    let splittedUrl = req.originalUrl.split("/");
     let bookId = splittedUrl[splittedUrl.length - 2];
 
     await LoanService.update(bookId);

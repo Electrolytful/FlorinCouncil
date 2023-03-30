@@ -10,14 +10,23 @@ class Loan {
     this.author = author;
     this.year = year;
     this.complete = complete;
-
   }
 }
 
 class LoanService {
   static mapToModel(dbResponse) {
     return dbResponse.rows.map(
-      (e) => new Loan(e.id, e.book_id, e.title, e.author, e.year, e.user_id, e.date, e.complete)
+      (e) =>
+        new Loan(
+          e.id,
+          e.book_id,
+          e.title,
+          e.author,
+          e.year,
+          e.user_id,
+          e.date,
+          e.complete
+        )
     );
   }
 
@@ -45,7 +54,7 @@ class LoanService {
       );
       return LoanService.mapToModel(loan);
     } catch (error) {
-      return error.message
+      return error.message;
     }
   }
 
@@ -61,7 +70,7 @@ class LoanService {
       );
       return LoanService.mapToModel(loan);
     } catch (error) {
-      return error.message
+      return error.message;
     }
   }
 }
