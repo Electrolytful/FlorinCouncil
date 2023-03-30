@@ -43,7 +43,8 @@ async function loanBook(req, res) {
 
     await LoanService.create(userId, bookId);
 
-    return await showUserBooks(req, res);
+    // return await showUserBooks(req, res);
+    return await index(req, res);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

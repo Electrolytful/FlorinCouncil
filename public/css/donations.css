@@ -1,109 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&family=League+Spartan&family=Lobster+Two&family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Antic+Slab&family=League+Spartan&family=Lobster+Two&family=Raleway&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
 body {
-    background-color: #F5F5F5;
-    text-align: center;
+  background-color: #f5f5f5;
+  text-align: center;
 }
 
 em {
-    font-family: 'Raleway';
-    color: #55286F;
-    font-size: 100%;
+  font-family: "Raleway";
+  color: #55286f;
+  font-size: 100%;
+}
 
+.donations-container {
+  padding: 20px;
 }
 
 .img-container {
-    padding: 1em 1.5em 0em 1.5em;
-    transition: transform 0.3s ease;
+  padding: 1em 1.5em 0em 1.5em;
+  transition: transform 0.3s ease;
 }
 
 .img-size {
-    max-width: 20%;
+  max-width: 20%;
 }
 
 #page-title {
-    display: flex;
-    color: #55286F;
-    font-size: 300%;
-    justify-content: center ;
-    margin-bottom: 0px;
-    padding-bottom: 0.2em;
-    font-family: 'Raleway', bold;
+  display: flex;
+  color: #55286f;
+  font-size: 300%;
+  justify-content: center;
+  margin-bottom: 0px;
+  padding-bottom: 0.2em;
+  font-family: "Raleway", bold;
 }
 
 #donation-title {
-    display: flex;
-    color: #55286F;
-    font-size: 150%;
-    justify-content: center ;
-    font-family: 'Raleway', bold;
+  display: flex;
+  color: #55286f;
+  font-size: 150%;
+  justify-content: center;
+  font-family: "Raleway", bold;
 }
 
 #donation-description {
-    color: #55286F;
-    font-size: 20px;
-    text-align: center;
-    padding: 0em 4em 0em 4em;
-    font-family: 'Antic Slab', serif;
+  color: #55286f;
+  font-size: 20px;
+  text-align: center;
+  padding: 0em 4em 0em 4em;
+  font-family: "Antic Slab", serif;
 }
 
 hr {
-    width: 60%;
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  width: 60%;
+  border: 0;
+  height: 1px;
+  margin-left: 350px;
+  margin-top: 20px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
 }
-
-/* button {
-	background-color: transparent;
-	border-radius:8px;
-    border: 2px solid #6c4284;
-	display:inline-block;
-	cursor:pointer;
-	color:#6c4284;
-    font-family: 'Raleway', bold;
-	font-size: 16px;
-	padding: 0.5em 0.5em;
-	text-decoration:none;
-    margin-bottom: 1em;
-}
-button:hover {
-	background-color:#6c4284;
-	color:#E9F1F7;
-}
-button:active {
-	position:relative;
-	top:1px;
-} */
-
-button {
-    background-color: #55286F;
-    border-radius: 8px;
-    border-style: none;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline-block;
-    font-family: 'League Spartan', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    height: 40px;
-    line-height: 20px;
-    list-style: none;
-    margin: 0;
-    outline: none;
-    padding: 10px 16px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    transition: color 100ms;
-    vertical-align: baseline;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-  button:hover,
-  button:focus {
-    background-color: #D8B4E2;
-  }

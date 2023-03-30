@@ -1,12 +1,12 @@
 .button {
-  background-color: #55286F;
+  background-color: #55286f;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-family: 'League Spartan', sans-serif;
+  font-family: "League Spartan", sans-serif;
   font-size: 14px;
   font-weight: 500;
   height: 40px;
@@ -27,5 +27,5 @@
 
 .button:hover,
 .button:focus {
-  background-color: #D8B4E2;
+  background-color: #d8b4e2;
 }
