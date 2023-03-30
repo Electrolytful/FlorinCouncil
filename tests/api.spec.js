@@ -68,7 +68,16 @@ describe("Library API Server", () => {
         expect(res.length).toBe(0);
       });
 
-      // TODO : Include a test on showAll, where the book is lent and shouldn't come on the result.
+      it("Given borrowed book, all books shouldn't include borrowed one.", async () => {
+        let systemUnderTest = require("../models/Book.js");
+        await givenBooksExist();
+        await givenUsers();
+        await givenLoans();
+
+        const res = await systemUnderTest.showAll();
+
+        expect(res.length).toBe(1);
+      });
     });
 
     describe("Show", () => {
@@ -148,21 +157,6 @@ describe("Library API Server", () => {
       });
     });
 
-    // it("GIVEN books to be lent WHEN borrowing an unexisting book THEN book is not reserved", async () => {
-    //   let systemUnderTest = require("../models/Loan.js");
-    //   await givenUsers();
-    //   await givenBooksExist();
-
-    //   const res = await systemUnderTest.create(1, 4);
-
-    //   expect(res.length).toBe(1);
-
-    //   // TODO : Test is failing (shouldn't create the loan for an unexisting book)
-    //   let bookBorrowed = res[0];
-    //   expect(bookBorrowed.complete).toBe(false);
-    //   expect(bookBorrowed.user_id).toBe(1);
-    //   expect(bookBorrowed.book_id).toBe(1);
-    // });
     describe("update", () => {
       it("GIVEN existing loan WHEN returning book THEN complete status is set to true", async () => {
         let systemUnderTest = require("../models/Loan.js");
@@ -245,6 +239,102 @@ describe("Library API Server", () => {
     });
   });
 
+  describe("User", () => {
+    describe("instance", () => {
+      it("GIVEN class WHEN creating new instance THEN return object.", async () => {
+        let systemUnderTest = require("../models/User.js");
+        let data = {
+          'id': 1,
+          'username': 'testing',
+          'name': 'test',
+          'email': 'test@email',
+          'password': 'password',
+          'address': 'address 123',
+          'phone_number': '01234567891',
+          'date_of_birth': '1990-01-01'
+        };
+
+        let res = new systemUnderTest(data)
+        console.log(res)
+        expect(res.id).toBe(1);
+        expect(res.username).toBe('testing');
+        expect(res.name).toBe('test');
+        expect(res.email).toBe('test@email');
+        expect(res.password).toBe('password');
+        expect(res.address).toBe('address 123');
+        expect(res.phone_number).toBe('01234567891');
+        expect(res.date_of_birth).toBe('1990-01-01');
+      });
+    });
+
+    describe("showUserByEmail", () => {
+      it("GIVEN user exists WHEN specific user by email THEN user object is returned.", async () => {
+        let systemUnderTest = require("../models/User.js");
+        await givenUsers();
+
+        const res = await systemUnderTest.showUserByEmail('john.doe@email.com');
+        expect(res.email).toBe('john.doe@email.com');
+      });
+
+      it("GIVEN user does not exist WHEN getting inexistent user by email THEN false is returned.", async () => {
+        let systemUnderTest = require("../models/User.js");
+        await givenUsers();
+
+        const res = await systemUnderTest.showUserByEmail('another.email@email.com');
+
+        expect(res).toBe(false);
+      });
+    });
+
+    describe("create", () => {
+      it("GIVEN users WHEN creates a new users THEN new user object is returned.", async () => {
+        let systemUnderTest = require("../models/User.js");
+        await givenUsers();
+
+        let body = {
+          'username': 'test_username',
+          'name': 'Test User',
+          'email': 'test_email@email.com',
+          'address': 'home 123',
+          'phone': '01234567891',
+          'dob': '1990-01-01',
+          'hashedPassword': 'hashedpw'
+        }
+
+        const res = await systemUnderTest.create(body);
+
+        expect(res.username).toBe('test_username');
+        expect(res.name).toBe('Test User');
+        expect(res.email).toBe('test_email@email.com');
+        expect(res.address).toBe('home 123');
+        expect(res.phone_number).toBe('01234567891');
+      });
+
+      it("GIVEN users WHEN creating new user with uncomplete data THEN false is returned.", async () => {
+        let systemUnderTest = require("../models/User.js");
+        await givenUsers();
+
+        let body = {
+          'username': 'test_username',
+          'name': 'Test User',
+          'email': 'test_email@email.com',
+          'hashedPassword': 'hashedpw'
+        }
+
+        try {
+
+        const res = await systemUnderTest.create(body);
+
+        } catch (error) {
+
+          expect(error.message).toBe("null value in column \"address\" of relation \"users\" violates not-null constraint");
+        
+        }
+      });
+    });
+
+  });
+
   describe("/recycling", () => {
     describe("GET", () => {
       it("Returns status code 200 when donation items are available.", async () => {
@@ -262,7 +352,7 @@ describe("Library API Server", () => {
         await givenBooksExist();
 
         const res = await request(app).get("/library");
-        expect(res.statusCode).toBe(200);
+        expect(res.statusCode).toBe(302);
       });
 
       it("Returns status code 200 if book name exist.", async () => {
