@@ -6,6 +6,8 @@
   box-sizing: border-box;
   font-family: "Antic Slab", serif;
   scroll-behavior: smooth;
+  text-decoration: none;
+  list-style: none;
 }
 
 body {
@@ -43,6 +45,11 @@ body {
   z-index: 10;
 }
 
+.no-select {
+  user-select: none;
+  cursor: default;
+}
+
 #title {
   font-family: "Raleway";
   font-size: 54px;
@@ -63,6 +70,10 @@ body {
   font-size: 300%;
   justify-content: center;
   font-family: "Raleway", bold;
+}
+
+#see-more-button {
+  margin-top: 20px;
 }
 
 /* Landmark styles */
