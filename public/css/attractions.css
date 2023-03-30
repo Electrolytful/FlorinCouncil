@@ -3,6 +3,7 @@
 body {
     background-color: #F5F5F5;
     text-align: center;
+    overflow-x: hidden;
 }
 
 #page-title {
