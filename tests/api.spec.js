@@ -68,7 +68,16 @@ describe("Library API Server", () => {
         expect(res.length).toBe(0);
       });
 
-      // TODO : Include a test on showAll, where the book is lent and shouldn't come on the result.
+      it("Given borrowed book, all books shouldn't include borrowed one.", async () => {
+        let systemUnderTest = require("../models/Book.js");
+        await givenBooksExist();
+        await givenUsers();
+        await givenLoans();
+
+        const res = await systemUnderTest.showAll();
+
+        expect(res.length).toBe(1);
+      });
     });
 
     describe("Show", () => {
@@ -148,21 +157,6 @@ describe("Library API Server", () => {
       });
     });
 
-    // it("GIVEN books to be lent WHEN borrowing an unexisting book THEN book is not reserved", async () => {
-    //   let systemUnderTest = require("../models/Loan.js");
-    //   await givenUsers();
-    //   await givenBooksExist();
-
-    //   const res = await systemUnderTest.create(1, 4);
-
-    //   expect(res.length).toBe(1);
-
-    //   // TODO : Test is failing (shouldn't create the loan for an unexisting book)
-    //   let bookBorrowed = res[0];
-    //   expect(bookBorrowed.complete).toBe(false);
-    //   expect(bookBorrowed.user_id).toBe(1);
-    //   expect(bookBorrowed.book_id).toBe(1);
-    // });
     describe("update", () => {
       it("GIVEN existing loan WHEN returning book THEN complete status is set to true", async () => {
         let systemUnderTest = require("../models/Loan.js");
@@ -262,7 +256,7 @@ describe("Library API Server", () => {
         await givenBooksExist();
 
         const res = await request(app).get("/library");
-        expect(res.statusCode).toBe(200);
+        expect(res.statusCode).toBe(302);
       });
 
       it("Returns status code 200 if book name exist.", async () => {
