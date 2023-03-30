@@ -5,27 +5,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/library.css" />
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/hover.css">
+    <link rel="stylesheet" href="/css/buttons/button.css">
+    <link rel="stylesheet" href="/css/scroll-top.css">
+    <script defer src="/scripts/scroll-top.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <a href="/library">Return</a>
-    <br />
 
-    <p>My Books</p>
+    <button onclick="topFunction()" id="myBtn" class="button" title="Go to top">Back to Top</button>
 
-    <ul>
-        <% books.forEach(function(book){ %>
-            <form action="/library/<%= book.id %>/return" method="POST">
-                <li>
-                    <%= book.book_name %> - <%= book.author %> (<%= book.year %>) <% if(!book.complete) { %> <button
-                                        type="submit">Return</button>
-                                    <% } %>
-                </li>
-            </form>
+    <header>
+        <h1 class="logo" onclick="location.href='/'"> Florin County </h1>
+        <nav class="nav">
+            <a href="/library"><button class="button" role="button">Back to Library</button></a>
+            <a href="/users/dashboard"><button class="button" role="button">Dashboard</button></a>
+            <a href="/users/logout"><button class="button" role="button">Logout</button></a>
+        </nav>
+    </header>
 
-            <% }); %>
-    </ul>
+    <h1 class="title">My Books</h1>
+
+    <div class="books-container">
+        <div id="borrowed-books">
+            <h2 id="borrowed" class="title">Borrowed Books</h2>
+            <ul class="books-collection">
+                <% books.forEach(function(book){ %>
+                    <% if(!book.complete) { %>
+                        <form action="/library/<%= book.id %>/return" method="POST">
+                            <li>
+                                <p class="book-description">
+                                    <%= book.book_name %> - <%= book.author %> (<%= book.year %>)
+                                </p>
+                                <button class="button" type="submit">Return</button>
+                            </li>
+                        </form>
+                        <% } %>
+                            <% }) %>
+            </ul>
+        </div>
+
+        <div id="returned-books">
+            <h2 id="returned" class="title">Returned Books</h2>
+            <ul class="books-collection">
+                <% books.forEach(function(book){ %>
+                    <% if(book.complete) { %>
+                        <li>
+                            <p class="book-description">
+                                <%= book.book_name %> - <%= book.author %> (<%= book.year %>)
+                            </p>
+                        </li>
+
+                        <% } %>
+                            <% }) %>
+            </ul>
+        </div>
+
+    </div>
+
 </body>
 
 </html>

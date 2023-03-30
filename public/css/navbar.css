@@ -1,18 +1,18 @@
 header {
-    display: flex;
-    position: sticky;
-    justify-content: space-between;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 20px;
-    align-items: center;
-    z-index: 1000;
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  align-items: center;
+  z-index: 1000;
 }
 
 .logo {
-    font-family: 'Lobster Two', cursive;
-    font-size: 50px;
-    color: #55286F;
-    cursor: pointer;
+  font-family: "Lobster Two", cursive;
+  font-size: 50px;
+  color: #55286f;
+  cursor: pointer;
 }

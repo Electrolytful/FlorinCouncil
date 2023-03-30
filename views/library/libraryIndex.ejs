@@ -5,29 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/buttons/button.css" />
-    <link rel="stylesheet" href="/public/css/library.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/library.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/hover.css">
+    <link rel="stylesheet" href="/css/buttons/button.css">
+    <link rel="stylesheet" href="/css/scroll-top.css">
+    <script defer src="/scripts/scroll-top.js"></script>
+    <title>Library</title>
 </head>
 
 <body>
-    <a href="/users/dashboard">Dashboard</a>
-    <a href="/library/mybooks">My books</a>
-    <br />
 
-    <p>Library</p>
+    <button onclick="topFunction()" id="myBtn" class="button" title="Go to top">Back to Top</button>
 
-    <ul>
+    <header>
+        <h1 class="logo" onclick="location.href='/'"> Florin County </h1>
+        <nav class="nav">
+            <a href="/library/mybooks"><button class="button" role="button">My Books</button></a>
+            <a href="/users/dashboard"><button class="button" role="button">Dashboard</button></a>
+            <a href="/users/logout"><button class="button" role="button">Logout</button></a>
+        </nav>
+    </header>
+
+    <h1 class="title">Welcome to the Library</h1>
+
+    <ul class="books-collection">
         <% books.forEach(function(book){ %>
             <form action="/library/<%= book.id %>/loan" method="POST">
                 <li>
-                    <%= book.title %> - <%= book.author %> (<%= book.year %>) / <button type="submit" class="button">
-                                    Click me </button>
+                    <div class="book-title">
+                        <p class="book-description">
+                            <%= book.title %> - <%= book.author %> (<%= book.year %>)
+                        </p>
+                    </div>
+                    <button type="submit" class="button">Borrow</button>
                 </li>
             </form>
 
             <% }); %>
     </ul>
+
 </body>
 
 </html>
