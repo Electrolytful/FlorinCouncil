@@ -67,12 +67,6 @@ CREATE TABLE recycling_items(
     PRIMARY KEY (id)
 );
 
-INSERT INTO users
-    (username, name, email, password, address, phone_number, date_of_birth)
-VALUES
-    ('test_user', 'John Doe', 'john.doe@email.com', 'p4ssw0rd', '123 High Street', '01234567891', '1990-01-01'),
-    ('test_user00', 'Jane Doe', 'jane.doe@email.com', 'password', '123 High Street', '09876543210', '1990-01-01');
-
 INSERT INTO books
     (title, author, year)
 VALUES
