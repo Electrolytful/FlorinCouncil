@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100&display=swap");
 
 button {
   font-size: 30px;
@@ -42,12 +41,12 @@ button:after {
 
 #register-btn {
   color: purple;
-  font-family: 'League Spartan', sans-serif;
+  font-family: "League Spartan", sans-serif;
 }
 
 #login-btn {
   border: 2px solid purple;
   background-color: purple;
   color: white;
-  font-family: 'League Spartan', sans-serif;
+  font-family: "League Spartan", sans-serif;
 }
