@@ -1,75 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
-    />
-    <link 
-        rel="stylesheet" 
-        href="/public/css/register.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/buttons/button.css">
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
     <title>Register</title>
 </head>
+
 <body>
-    <h1 style="text-align: center;">Register</h1>
+    <a id="home" href="/"><button class="button" role="button">Home</button></a>
 
-    <!-- if error returned by server when registering then show those errors in list -->
-    <ul style="text-align: center;">
-        <% if(typeof errors != 'undefined') { %>
-            <% errors.forEach(err => { %>
-                <li><%= err.message %></li>
-          <%  }) %>
-       <% } %>
-    </ul>
+    <div class="form-container">
+        <div class="title-container">
+            <h1 id="title">Register</h1>
+        </div>
 
-    <!-- register form -->
-    <form action="/users/register" method="POST" style="text-align: center;">
-        <div>
-            <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                placeholder="Name" 
-                required
-            />
+        <div id="errors-container">
+            <!-- if error returned by server when registering then show those errors in list -->
+            <ul id="errors">
+                <% if(typeof errors !='undefined' ) { %>
+                    <% errors.forEach(err=> { %>
+                        <li>
+                            <%= err.message %>
+                        </li>
+                        <% }) %>
+                            <% } %>
+            </ul>
         </div>
-        <div>
-            <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                placeholder="Email" 
-                required
-            />
+
+        <div class="form-content">
+            <!-- register form -->
+            <form id="form" action="/users/register" method="POST">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Username" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Full Name" required />
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required />
+                </div>
+                <div class="input-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" placeholder="Address" required />
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" name="phone" placeholder="Phone Number" required />
+                </div>
+                <div class="input-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" placeholder="Date Of Birth" required />
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required />
+                </div>
+                <div class="input-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" id="password2" name="password2" placeholder="Confirm Password" required />
+                </div>
+                <div>
+                    <input type="submit" value="Register" />
+                </div>
+            </form>
+            <div>
+                <a id="login-link" href="/users/login">Already registered? Login here</a>
+            </div>
         </div>
-        <div>
-            <input 
-                type="password" 
-                id="password" 
-                name="password" 
-                placeholder="Password" 
-                required
-            />
-        </div>
-        <div>
-            <input 
-                type="password" 
-                id="password2" 
-                name="password2" 
-                placeholder="Confirm Password" 
-                required
-            />
-        </div>
-        <div>
-            <input type="submit" value="Register"/>
-        </div>
-        <div>
-            <a href="/users/login">Already registered? Login here</a>
-        </div>
-    </form>
+
+    </div>
+
 </body>
+
 </html>

@@ -1,21 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link 
-        rel="stylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"
-    />
-    <link 
-        rel="stylesheet" 
-        href="/public/css/dashboard.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/buttons/button.css">
+    <link rel="stylesheet" href="/css/hover.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+    <script defer src="/scripts/dashboard.js"></script>
     <title>Dashboard</title>
 </head>
+
 <body>
-    <h1>Hello <%= user %></h1>
-    <a href="/users/logout">Logout</a>
+    <header>
+        <h1 class="logo" onclick="location.href='/'"> Florin County </h1>
+        <nav class="nav">
+            <a href="/users/logout"><button class="button" role="button">Logout</button></a>
+        </nav>
+    </header>
+
+    <div id="welcome">
+        <h1>Welcome to your dashboard, <span style="color: #E51DC7;">
+                <%= user %>
+            </span>!
+        </h1>
+    </div>
+
+    <div class="board-container">
+        <div class="board-row">
+            <div id="library" class="board hover-effect">
+                <h2 class="board-title">Library</h2>
+                <i class='bx bxs-book'></i>
+            </div>
+
+            <div id="attractions" class="board hover-effect">
+                <h2 class="board-title">Attractions</h2>
+                <i class='bx bxs-tree'></i>
+            </div>
+        </div>
+
+        <div id="recycling" class="board hover-effect">
+            <h2 class="board-title">Recycling</h2>
+            <i class='bx bx-recycle'></i>
+        </div>
+    </div>
+
 </body>
+
 </html>

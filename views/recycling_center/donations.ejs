@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/donations.css" />
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/buttons/button.css">
+    <link rel="stylesheet" href="/css/scroll-top.css">
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+    <script defer src="/scripts/scroll-top.js"></script>
+    <title>Recycling Center</title>
+</head>
+
+<body>
+    <header>
+
+        <button onclick="topFunction()" id="myBtn" class="button" title="Go to top">Back to Top</button>
+
+        <h1 class="logo" onclick="location.href='/'"> Florin County </h1>
+        <nav class="nav">
+            <a href="/users/dashboard"><button class="button" role="button">Dashboard</button></a>
+            <a href="/users/logout"><button class="button" role="button">Logout</button></a>
+        </nav>
+    </header>
+
+    <h1 id="page-title">Recycling Center</h1>
+    <em>Second hand items for donation!</em>
+
+    <div class="donations-container">
+        <ul>
+            <% donations.forEach(function(donation){ %>
+                <form action="/recycling/donations/<%= donation.id %>" method="POST">
+                    <div class="img-container">
+                        <img class="img-size" src="<%= donation.picture_url %>" alt="<%= donation.title %>" />
+                    </div>
+                    <br>
+                    <h3 id="donation-title">
+                        <%= donation.title %>
+                    </h3>
+                    <br>
+                    <p id="donation-description">
+                        <%= donation.description %>
+                    </p>
+                    <br>
+
+                    <button id="rec-reservation-button" class="button" type="submit"> Accept Donation </button>
+
+                    <br>
+                    <hr>
+                </form>
+                <% }); %>
+        </ul>
+    </div>
+    <script src="/scripts/donations.js"></script>
+</body>
+
+</html>
