@@ -30,6 +30,8 @@
 
     <h1 class="title">Welcome to the Library</h1>
 
+    <!-- If loancCompleted / exiba um paragrafo -->
+
     <ul class="books-collection">
         <% books.forEach(function(book){ %>
             <form action="/library/<%= book.id %>/loan" method="POST">
@@ -39,13 +41,13 @@
                             <%= book.title %> - <%= book.author %> (<%= book.year %>)
                         </p>
                     </div>
-                    <button type="submit" class="button">Borrow</button>
+                    <button id="reservation-button" type="submit" class="button">Borrow</button>
                 </li>
             </form>
 
             <% }); %>
     </ul>
-
+    <script src="/scripts/library.js"></script>
 </body>
 
 </html>
