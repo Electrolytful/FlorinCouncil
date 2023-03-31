@@ -49,7 +49,7 @@ This solution was created to aid the Florin County Council's population to addre
 
 ## Installation and Usage
 
-In order to have access to this application, download this [repository](https://github.com/sord-dev/Hisotrio-Client) and open its content folder on an IDE.  
+In order to have access to this application, download this [repository](https://github.com/Electrolytful/FlorinCouncil) and open its content folder on an IDE.  
 To install all necessary dependencies, open the terminal and nagivate to FlorinCouncil-main folder and run `npm install`.  
 To set the database up, run `npm run setup-db` on the terminal.  
 On the root folder (e.g. FlorinCouncil-main), create a `.env` folder and enter the following information:
